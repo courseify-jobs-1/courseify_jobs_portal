@@ -3,352 +3,205 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
-  <title>Courseify – Supercharge Your Career | by Infin8Labs</title>
-  <meta name="description" content="Courseify by Infin8Labs – Premium courses, bite-sized educational shorts, and a live daily-updated job board." />
-  
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='80'>🚀</text></svg>">
-  
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <title>Courseify – Supercharge Your Career</title>
   
   <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <script>
-    tailwind.config = {
-      theme: {
-        extend: { fontFamily: { jakarta: ['"Plus Jakarta Sans"', 'sans-serif'] } }
-      }
-    }
+    tailwind.config = { theme: { extend: { fontFamily: { jakarta: ['"Plus Jakarta Sans"', 'sans-serif'] } } } }
   </script>
 
   <style>
-    body {
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #F8FAFC; /* Slate 50 */
-      color: #0F172A; /* Slate 900 */
-      overflow-x: hidden;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f1f5f9; overflow-x: hidden; }
 
-    /* SCROLLBAR */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #F8FAFC; }
-    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg,#3B82F6,#8B5CF6); border-radius: 99px; }
-
-    /* ANIMATIONS */
-    @keyframes orbFloat1 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(40px,-40px) scale(1.05);} }
-    @keyframes orbFloat2 { 0%,100%{transform:translate(0,0) scale(1);} 50%{transform:translate(-40px,40px) scale(1.05);} }
-    @keyframes gradShift { 0%{background-position:0% 50%;} 50%{background-position:100% 50%;} 100%{background-position:0% 50%;} }
-    @keyframes bob { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-15px);} }
-    @keyframes livePing { 0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,.4);} 50%{box-shadow:0 0 0 6px rgba(16,185,129,0);} }
-
-    /* BACKGROUND MESH */
-    .bg-layer { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; background: #F8FAFC; }
-    .grid-pattern {
-      position: absolute; inset: 0;
-      background-image: linear-gradient(rgba(15,23,42,.03) 1px, transparent 1px), linear-gradient(90deg, rgba(15,23,42,.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-    .orb { position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.6; }
-    .orb-blue { width: 500px; height: 500px; background: rgba(59,130,246,0.3); top: -100px; left: -100px; animation: orbFloat1 15s ease-in-out infinite; }
-    .orb-purple { width: 450px; height: 450px; background: rgba(139,92,246,0.25); bottom: 10%; right: -50px; animation: orbFloat2 18s ease-in-out infinite; }
-    .orb-pink { width: 400px; height: 400px; background: rgba(236,72,153,0.2); top: 30%; left: 30%; animation: orbFloat1 20s ease-in-out infinite reverse; }
-
-    /* LIGHT GLASSMORPHISM */
-    .glass {
-      background: rgba(255, 255, 255, 0.7);
-      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-    }
-    .glass-card {
-      background: rgba(255, 255, 255, 0.6);
-      backdrop-filter: blur(16px);
-      border: 1px solid rgba(255, 255, 255, 0.8);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
-      transition: all 0.3s ease;
-    }
-    .glass-card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
-      background: rgba(255, 255, 255, 0.9);
-    }
-
-    /* GRADIENTS */
-    .grad-text {
-      background: linear-gradient(135deg, #2563EB, #7C3AED, #DB2777);
-      background-size: 200% 200%;
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      animation: gradShift 5s ease infinite;
-    }
-
-    /* BUTTONS */
-    .btn-primary {
-      background: linear-gradient(135deg, #2563EB, #6366F1);
-      color: white;
-      transition: all 0.3s ease;
-      box-shadow: 0 10px 25px rgba(37, 99, 235, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 15px 35px rgba(37, 99, 235, 0.4);
-    }
+    /* Background Elements */
+    .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
+    .grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px); background-size: 60px 60px; }
     
-    .live-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; animation: livePing 1.5s infinite; }
-    .badge-light { background: rgba(59,130,246,0.1); color: #2563EB; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; padding: 4px 12px; border-radius: 99px; }
+    @keyframes orb1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-60px) scale(1.05); } }
+    @keyframes bobA { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
+    @keyframes bobB { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-20px) rotate(-4deg); } }
+    @keyframes shimmer { 0% { transform: translateX(-120%) skewX(-15deg); } 100% { transform: translateX(250%) skewX(-15deg); } }
+
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
+    .orb-blue { width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.3) 0%, transparent 70%); top: -10%; left: -10%; animation: orb1 15s ease-in-out infinite; }
+    .orb-purple { width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,.25) 0%, transparent 70%); bottom: 10%; right: -10%; animation: orb1 18s ease-in-out infinite reverse; }
+
+    /* Glass & Gradients */
+    .glass { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(24px); }
+    .glass-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; backdrop-filter: blur(20px); transition: all 0.3s; }
+    .glass-card:hover { transform: translateY(-5px); border-color: rgba(99,102,241,.4); box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(99,102,241,0.2); }
+    
+    .grad-text { background: linear-gradient(135deg,#60A5FA,#818CF8,#C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+
+    .btn-primary { position: relative; overflow: hidden; background: linear-gradient(135deg,#2563EB,#6366F1); color: white; border: 1px solid rgba(99,102,241,0.5); }
+    .btn-primary::before { content:''; position:absolute; top:0; left:-120%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transform:skewX(-15deg); }
+    .btn-primary:hover::before { animation: shimmer 1s ease-in-out; }
+    .btn-primary:hover { box-shadow: 0 0 30px rgba(99,102,241,0.6); transform: translateY(-2px); }
+
+    .live-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; animation: blink 1.5s infinite; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+    /* Phone Mockups */
+    .phone-wrap { border-radius: 38px; background: rgba(10,15,30,.9); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 40px 80px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.1); overflow: hidden; }
+    .phone-a { animation: bobA 6s ease-in-out infinite; }
+    .phone-b { animation: bobB 8s ease-in-out infinite; }
   </style>
 </head>
-<body class="font-jakarta text-slate-900 relative">
+<body class="font-jakarta relative">
 
   <div class="bg-layer">
-    <div class="grid-pattern"></div>
+    <div class="grid-lines"></div>
     <div class="orb orb-blue"></div>
     <div class="orb orb-purple"></div>
-    <div class="orb orb-pink"></div>
   </div>
 
   <header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4">
-    <nav class="glass rounded-full px-6 py-3 flex items-center justify-between">
-      <a href="#" class="flex items-center gap-2">
-        <div class="w-9 h-9 rounded-xl flex items-center justify-center bg-gradient-to-br from-blue-600 to-purple-600 shadow-lg shadow-blue-500/30">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        </div>
-        <span class="font-black text-xl tracking-tight">Course<span class="grad-text">ify</span></span>
-      </a>
-      
-      <div class="hidden md:flex items-center gap-6 font-semibold text-sm text-slate-600">
-        <a href="#home" class="hover:text-blue-600 transition-colors">Home</a>
-        <a href="#ecosystem" class="hover:text-blue-600 transition-colors">Platform</a>
-        <a href="#courses" class="hover:text-blue-600 transition-colors">Courses</a>
-        <a href="#jobs" class="hover:text-blue-600 transition-colors">Job Board</a>
+    <nav class="glass rounded-full px-6 py-3 flex justify-between items-center">
+      <div class="font-black text-xl tracking-tight text-white">Course<span class="grad-text">ify</span></div>
+      <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-300">
+        <a href="#jobs" class="hover:text-white transition">Live Jobs</a>
+        <a href="#blog" class="hover:text-white transition">Today's Update</a>
       </div>
-
-      <a href="#cta" class="btn-primary px-6 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
-        Download App
-      </a>
+      <a href="#app" class="btn-primary px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/20">Download App</a>
     </nav>
   </header>
 
-  <section id="home" class="relative pt-40 pb-20 px-4 min-h-screen flex items-center">
+  <section class="min-h-screen flex items-center pt-32 pb-20 px-4">
     <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8 z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white border border-slate-200 shadow-sm">
-          <div class="live-dot"></div>
-          <span class="text-xs font-bold text-emerald-600 tracking-widest uppercase">Now Live · 50K+ Learners</span>
+      <div class="space-y-8 relative z-10">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
+          <div class="live-dot"></div><span class="text-xs font-bold text-emerald-400 tracking-widest uppercase">Now Live · Job Board</span>
         </div>
-        
-        <h1 class="text-6xl lg:text-7xl font-black leading-[1.1] tracking-tight">
-          Supercharge <br>
-          <span class="grad-text">Your Career.</span><br>
-          Zero Limits.
+        <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tight">
+          Supercharge <br><span class="grad-text">Your Career.</span>
         </h1>
-        
-        <p class="text-lg text-slate-600 max-w-md font-medium leading-relaxed">
-          Master in-demand skills, binge bite-sized shorts, and land your dream role on our live, daily-updated job board. 
-        </p>
-        
+        <p class="text-lg text-slate-400 max-w-md">Learn from premium courses, swipe through tech shorts, and apply to Live Jobs directly from your phone.</p>
         <div class="flex gap-4">
-          <a href="#jobs" class="btn-primary px-8 py-4 rounded-full font-bold text-[1rem]">Explore Live Jobs</a>
-          <a href="#courses" class="bg-white border border-slate-200 text-slate-800 hover:bg-slate-50 transition-colors px-8 py-4 rounded-full font-bold text-[1rem] shadow-sm">View Courses</a>
+          <a href="#app" class="btn-primary px-8 py-4 rounded-full font-bold">Get the App</a>
+          <a href="#jobs" class="glass px-8 py-4 rounded-full font-bold hover:bg-white/10 transition text-white">Explore Jobs</a>
         </div>
       </div>
 
-      <div class="relative h-[600px] hidden lg:flex justify-center items-center" style="animation: bob 6s ease-in-out infinite;">
-        <div class="absolute w-80 h-80 bg-blue-400/20 blur-3xl rounded-full"></div>
-        <div class="relative z-20 w-[280px] h-[580px] bg-white rounded-[40px] border-[8px] border-slate-100 shadow-2xl shadow-slate-300/50 overflow-hidden flex flex-col">
-          <div class="absolute top-0 inset-x-0 h-6 bg-slate-100 rounded-b-xl w-32 mx-auto z-30"></div>
-          
-          <div class="p-5 pt-10 bg-slate-50 flex-1">
-            <h3 class="font-black text-xl mb-4">Good morning, <br><span class="text-blue-600">Sumanth 👋</span></h3>
-            
-            <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 mb-4">
-              <div class="text-xs text-slate-500 font-bold mb-1">CONTINUE LEARNING</div>
-              <div class="font-bold">Databricks & PySpark</div>
-              <div class="w-full bg-slate-100 h-2 rounded-full mt-3">
-                <div class="bg-blue-600 h-2 rounded-full w-[70%]"></div>
-              </div>
-            </div>
-
-            <div class="text-xs text-slate-500 font-bold mb-2">NEW JOBS POSTED TODAY</div>
-            <div class="space-y-3">
-              <div class="bg-emerald-50 border border-emerald-100 p-3 rounded-xl flex justify-between items-center">
-                <div>
-                  <div class="font-bold text-sm">Data Engineer</div>
-                  <div class="text-xs text-emerald-600">RAPL · Hyderbad</div>
-                </div>
-                <div class="bg-emerald-500 text-white text-[10px] px-2 py-1 rounded-md font-bold">APPLY</div>
-              </div>
-              <div class="bg-blue-50 border border-blue-100 p-3 rounded-xl flex justify-between items-center">
-                <div>
-                  <div class="font-bold text-sm">Full-Stack Dev</div>
-                  <div class="text-xs text-blue-600">SnapOnWheels · Remote</div>
-                </div>
-                <div class="bg-blue-500 text-white text-[10px] px-2 py-1 rounded-md font-bold">APPLY</div>
-              </div>
-            </div>
+      <div class="relative h-[600px] hidden lg:flex justify-center items-center">
+        <div class="absolute phone-wrap phone-b w-[220px] h-[450px] z-10 right-10 top-10 p-4 opacity-60">
+          <div class="text-xs font-bold text-white mb-4">Educational Shorts</div>
+          <div class="h-4/5 w-full bg-gradient-to-b from-purple-500/30 to-blue-500/30 rounded-2xl border border-white/10 flex items-center justify-center">
+            <span class="text-4xl">⚡</span>
+          </div>
+        </div>
+        <div class="absolute phone-wrap phone-a w-[260px] h-[520px] z-20 shadow-2xl shadow-blue-500/20 p-5 pt-10">
+          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl"></div>
+          <h3 class="font-bold text-lg text-white mb-4">Good morning! 👋</h3>
+          <div class="glass p-3 rounded-xl mb-4">
+            <div class="text-[10px] text-emerald-400 font-bold mb-1">NEW JOB MATCH</div>
+            <div class="font-bold text-sm text-white">Data Engineer</div>
+            <div class="text-xs text-slate-400">RAPL · Hyderabad</div>
+          </div>
+          <div class="glass p-3 rounded-xl border-blue-500/30">
+            <div class="text-[10px] text-blue-400 font-bold mb-1">CONTINUE LEARNING</div>
+            <div class="font-bold text-sm text-white">Databricks Masterclass</div>
+            <div class="w-full h-1 bg-white/10 rounded-full mt-2"><div class="w-[70%] h-full bg-blue-500 rounded-full"></div></div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section id="ecosystem" class="py-20 px-4">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-16">
-        <span class="badge-light mb-4 inline-block">The Ecosystem</span>
-        <h2 class="text-4xl md:text-5xl font-black">Built for <span class="grad-text">Growth</span></h2>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-12 gap-6">
-        <div class="glass-card md:col-span-7 rounded-[32px] p-8 flex flex-col justify-between min-h-[300px]">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl mb-6">📚</div>
-            <h3 class="text-3xl font-black mb-3">Premium Courses</h3>
-            <p class="text-slate-600 font-medium">From zero to hero. Learn Python, Full-Stack, UI/UX, and Data Engineering from industry experts.</p>
-          </div>
-          <div class="flex gap-2 mt-6 flex-wrap">
-            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold shadow-sm">React</span>
-            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold shadow-sm">Flutter</span>
-            <span class="px-3 py-1 bg-white border border-slate-200 rounded-full text-xs font-bold shadow-sm">Data Science</span>
-          </div>
-        </div>
-
-        <div class="glass-card md:col-span-5 rounded-[32px] p-8 flex flex-col justify-between min-h-[300px] bg-gradient-to-br from-purple-50 to-pink-50">
-          <div>
-            <div class="w-12 h-12 rounded-2xl bg-purple-100 text-purple-600 flex items-center justify-center text-2xl mb-6">⚡</div>
-            <h3 class="text-3xl font-black mb-3">Edu Shorts</h3>
-            <p class="text-slate-600 font-medium">Scroll and learn. 60-second bite-sized concepts perfect for your daily commute.</p>
-          </div>
-        </div>
-
-        <div class="glass-card md:col-span-12 rounded-[32px] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-r from-emerald-50 to-teal-50">
-          <div class="max-w-lg">
-            <div class="inline-flex items-center gap-2 px-3 py-1 bg-emerald-100 rounded-full mb-4">
-              <div class="live-dot"></div><span class="text-xs font-bold text-emerald-700">UPDATED DAILY</span>
-            </div>
-            <h3 class="text-4xl font-black mb-4">Live Job Board</h3>
-            <p class="text-slate-600 font-medium text-lg">We scrape the top tech companies daily so you don't have to. Find roles, apply instantly, and track your progress.</p>
-          </div>
-          <div class="flex-shrink-0 grid grid-cols-2 gap-4 text-center">
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
-              <div class="text-4xl font-black text-emerald-600">12K+</div>
-              <div class="text-sm font-bold text-slate-500 mt-1">Active Roles</div>
-            </div>
-            <div class="bg-white p-6 rounded-2xl shadow-sm border border-emerald-100">
-              <div class="text-4xl font-black text-blue-600">24hr</div>
-              <div class="text-sm font-bold text-slate-500 mt-1">Refresh Rate</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="jobs" class="py-20 px-4">
+  <section id="jobs" class="py-24 px-4 relative z-10">
     <div class="max-w-6xl mx-auto">
       <div class="flex justify-between items-end mb-10">
         <div>
-          <span class="badge-light text-emerald-600 bg-emerald-100 mb-2 inline-block">Hiring Now</span>
-          <h2 class="text-3xl md:text-4xl font-black">Latest <span class="text-emerald-500">Opportunities</span></h2>
+          <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">Hiring Now</span>
+          <h2 class="text-4xl font-black text-white">Live <span class="grad-text">Job Board</span></h2>
         </div>
-        <a href="#" class="font-bold text-sm text-blue-600 hover:underline">View All Jobs →</a>
       </div>
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         
-        <div class="glass-card p-6 rounded-3xl hover:border-blue-300 group cursor-pointer">
+        <div class="glass-card p-6 flex flex-col h-full group">
           <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center font-black text-xl">G</div>
-            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">Full-Time</span>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-black text-white text-lg shadow-lg">
+              BS
+            </div>
+            <span class="bg-white/5 border border-white/10 text-slate-300 text-[10px] font-bold px-2 py-1 rounded-full">Government</span>
           </div>
-          <h4 class="text-xl font-bold mb-1 group-hover:text-blue-600 transition-colors truncate">Senior Frontend Engineer</h4>
-          <p class="text-slate-500 font-medium text-sm mb-4">Google · Remote, India</p>
-          <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-            <div class="font-bold text-emerald-600">₹25L - ₹40L</div>
-            <button class="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Apply</button>
+          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-blue-400 transition truncate" title="BSNL Junior Telecom Officer (JTO)">BSNL Junior Telecom Officer (JTO)</h4>
+          <p class="text-slate-400 text-sm mb-4 truncate">BSNL · India</p>
+          <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
+            <div class="font-bold text-emerald-400 text-sm">Not specified</div>
+            <a href="https://www.youtube.com/watch?v=fkG8yRtWS9M" target="_blank" class="btn-primary px-4 py-1.5 rounded-lg text-xs font-bold shadow-md shadow-blue-500/20">Apply</a>
           </div>
         </div>
-
-        <div class="glass-card p-6 rounded-3xl hover:border-blue-300 group cursor-pointer">
+        
+        <div class="glass-card p-6 flex flex-col h-full group">
           <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center font-black text-xl">A</div>
-            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">Remote</span>
+            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-black text-white text-lg shadow-lg">
+              CO
+            </div>
+            <span class="bg-white/5 border border-white/10 text-slate-300 text-[10px] font-bold px-2 py-1 rounded-full">IT</span>
           </div>
-          <h4 class="text-xl font-bold mb-1 group-hover:text-blue-600 transition-colors truncate">Data Engineer (PySpark)</h4>
-          <p class="text-slate-500 font-medium text-sm mb-4">Amazon · Hyderabad</p>
-          <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-            <div class="font-bold text-emerald-600">₹18L - ₹30L</div>
-            <button class="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Apply</button>
-          </div>
-        </div>
-
-        <div class="glass-card p-6 rounded-3xl hover:border-blue-300 group cursor-pointer">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 bg-slate-100 rounded-xl flex items-center justify-center font-black text-xl">S</div>
-            <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-full">Hybrid</span>
-          </div>
-          <h4 class="text-xl font-bold mb-1 group-hover:text-blue-600 transition-colors truncate">Flutter Developer</h4>
-          <p class="text-slate-500 font-medium text-sm mb-4">Swiggy · Bangalore</p>
-          <div class="flex items-center justify-between mt-auto pt-4 border-t border-slate-100">
-            <div class="font-bold text-emerald-600">₹15L - ₹22L</div>
-            <button class="text-sm font-bold bg-slate-900 text-white px-4 py-2 rounded-lg hover:bg-blue-600 transition-colors">Apply</button>
+          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-blue-400 transition truncate" title="Service Desk Role">Service Desk Role</h4>
+          <p class="text-slate-400 text-sm mb-4 truncate">Cognizant · Not specified</p>
+          <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
+            <div class="font-bold text-emerald-400 text-sm">Not specified</div>
+            <a href="https://english.rajeshjobportal.com/cognizant-fresher-hiring-for-service-desk-role-jobs-2026/" target="_blank" class="btn-primary px-4 py-1.5 rounded-lg text-xs font-bold shadow-md shadow-blue-500/20">Apply</a>
           </div>
         </div>
-
-        </div>
+        
+      </div>
     </div>
   </section>
 
-  <section id="blogs" class="py-20 px-4 bg-white/50 border-t border-slate-200">
-    <div class="max-w-6xl mx-auto">
-      <div class="text-center mb-12">
-        <h2 class="text-3xl font-black">Latest Insights</h2>
-        <p class="text-slate-500 mt-2">Career advice, interview tips, and tech news.</p>
+  <section id="blog" class="py-24 px-4 relative z-10 border-t border-white/5">
+    <div class="max-w-4xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl font-black text-white">Today's <span class="grad-text">Update</span></h2>
+        <p class="text-slate-400 mt-2">Daily tech insights generated by our AI.</p>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <div class="flex gap-6 items-center group cursor-pointer">
-          <div class="w-32 h-32 rounded-2xl bg-slate-200 flex-shrink-0 bg-cover bg-center overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-blue-400 to-purple-400 opacity-80 group-hover:scale-110 transition-transform duration-500"></div>
-          </div>
-          <div>
-            <div class="text-xs font-bold text-blue-600 mb-2 uppercase tracking-wide">Interview Prep</div>
-            <h4 class="text-xl font-bold mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">How to nail your System Design Interview in 2026</h4>
-            <p class="text-sm text-slate-500 line-clamp-2">A complete guide to architectural planning, load balancing, and zero-cost hosting setups.</p>
-          </div>
-        </div>
-        <div class="flex gap-6 items-center group cursor-pointer">
-          <div class="w-32 h-32 rounded-2xl bg-slate-200 flex-shrink-0 bg-cover bg-center overflow-hidden relative">
-            <div class="absolute inset-0 bg-gradient-to-br from-emerald-400 to-teal-400 opacity-80 group-hover:scale-110 transition-transform duration-500"></div>
-          </div>
-          <div>
-            <div class="text-xs font-bold text-emerald-600 mb-2 uppercase tracking-wide">Career Growth</div>
-            <h4 class="text-xl font-bold mb-2 group-hover:text-emerald-600 transition-colors line-clamp-2">From Junior to Senior: The Data Engineering Path</h4>
-            <p class="text-sm text-slate-500 line-clamp-2">Mastering PySpark, Databricks, and optimization techniques to level up your career.</p>
-          </div>
+
+      <div class="glass-card p-8 md:p-12 relative overflow-hidden group">
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/20 blur-[80px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-500"></div>
+        
+        <div class="relative z-10">
+          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-bold uppercase mb-4">
+            <span class="text-base">✨</span> AI Insight
+          </span>
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">Unlock Your Dream Tech Job: Master PySpark and Full-Stack Dev to Ride India's AI Wave</h3>
+          <p class="text-slate-300 leading-relaxed text-sm md:text-base">
+            As AI trends continue to dominate the Indian tech landscape, professionals with expertise in PySpark and full-stack development are in high demand. Databricks, a leading data analytics platform, is increasingly being adopted by Indian companies, making PySpark skills a valuable asset. To stay ahead in the job market, focus on acquiring skills in PySpark, full-stack development, and data engineering, and consider certifications like Databricks Certified Developer to boost your career prospects. With the Indian IT sector expected to hire over 1 million professionals in the next year, now is the perfect time to upskill and land your dream tech job.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <footer class="bg-slate-900 text-white pt-20 pb-10 px-4 border-t-[6px] border-blue-600">
+  <section id="app" class="py-24 px-4 relative z-10">
+    <div class="max-w-5xl mx-auto text-center glass-card p-12 border-blue-500/30 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 pointer-events-none"></div>
+      <h2 class="text-4xl md:text-5xl font-black text-white mb-6 relative z-10">Ready to take off? 🚀</h2>
+      <p class="text-slate-400 mb-8 max-w-lg mx-auto relative z-10">Join thousands of learners and professionals securing their future with the Courseify App.</p>
+      <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
+        <a href="#" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
+          Download iOS App
+        </a>
+        <a href="#" class="glass px-8 py-4 rounded-xl font-bold text-lg text-white hover:bg-white/10 transition flex items-center justify-center gap-3">
+          Download Android App
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 py-12 px-4 relative z-10 text-center md:text-left">
     <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
       <div>
-        <h2 class="text-2xl font-black mb-1">Courseify.</h2>
-        <p class="text-slate-400 text-sm">Supercharging careers, one skill at a time.</p>
+        <div class="font-black text-2xl text-white mb-2">Courseify.</div>
+        <p class="text-slate-500 text-sm">Supercharging careers through tech.</p>
       </div>
-      
-      <div class="flex gap-6 text-sm font-medium text-slate-400">
-        <a href="/privacy-policy.html" class="hover:text-white transition-colors">Privacy Policy</a>
-        <a href="/terms.html" class="hover:text-white transition-colors">Terms of Service</a>
-        <a href="mailto:contact@infin8labs.com" class="hover:text-white transition-colors">Contact</a>
-      </div>
-    </div>
-    
-    <div class="max-w-6xl mx-auto mt-12 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
-      <div class="text-slate-500 text-sm">© 2026 Courseify. All rights reserved.</div>
-      <div class="text-sm text-slate-500 font-medium text-right">
-        Powered by <span class="text-white font-bold tracking-wide">Infin8Labs</span> <br>
-        <span class="text-xs text-slate-600">Makers of SnapOnWheels</span>
+      <div class="text-slate-400 text-sm font-semibold">
+        <p>Powered by <span class="text-white">Infin8Labs</span></p>
+        <p class="text-xs mt-1">Makers of <span class="text-blue-400">SnapOnWheels</span></p>
       </div>
     </div>
   </footer>
