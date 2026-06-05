@@ -3,208 +3,470 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Courseify – Supercharge Your Career</title>
+  <title>Courseify — Supercharge Your Career | by Infin8Labs</title>
+  <meta name="description" content="Courseify is your all-in-one career acceleration platform. Premium courses, bite-sized shorts, and a live job board — built by Infin8Labs." />
+  <meta name="keywords" content="online courses, job board, career growth, tech skills, Infin8Labs, Courseify, e-learning" />
+  <meta name="author" content="Infin8Labs" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Courseify" />
+  <meta property="og:url" content="https://courseify.infin8labs.com/" />
+  <meta property="og:title" content="Courseify — Supercharge Your Career" />
+  <meta property="og:description" content="Premium courses, educational shorts & a live job board. Your end-to-end career acceleration platform by Infin8Labs." />
+  <meta property="og:image" content="https://courseify.infin8labs.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" />
+  <meta property="og:locale" content="en_IN" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Courseify — Supercharge Your Career" />
+  <meta name="twitter:description" content="Premium courses + live job board = career acceleration. Built by Infin8Labs." />
+  <meta name="twitter:image" content="https://courseify.infin8labs.com/og-image.jpg" />
   
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet" />
   <script>
-    tailwind.config = { theme: { extend: { fontFamily: { jakarta: ['"Plus Jakarta Sans"', 'sans-serif'] } } } }
+    tailwind.config = {
+      theme: { extend: { fontFamily: { sans: ['Plus Jakarta Sans','sans-serif'] } } }
+    }
   </script>
 
   <style>
-    *, *::before, *::after { box-sizing: border-box; }
-    body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #020617; color: #f1f5f9; overflow-x: hidden; }
+    /* ── BASE ── */
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:#ffffff;color:#0f172a;overflow-x:hidden}
 
-    /* Background Elements */
-    .bg-layer { position: fixed; inset: 0; pointer-events: none; z-index: -1; }
-    .grid-lines { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.02) 1px, transparent 1px); background-size: 60px 60px; }
+    /* ── SCROLLBAR ── */
+    ::-webkit-scrollbar{width:5px}
+    ::-webkit-scrollbar-track{background:#f1f5f9}
+    ::-webkit-scrollbar-thumb{background:linear-gradient(180deg,#6366f1,#06b6d4);border-radius:99px}
+
+    /* ── LIGHT MESH BACKGROUND ── */
+    .mesh-bg{
+      background-color:#ffffff;
+      background-image:
+        radial-gradient(at 20% 10%, rgba(99,102,241,0.09) 0px,transparent 55%),
+        radial-gradient(at 80% 5%,  rgba(124,58,237,0.07)  0px,transparent 50%),
+        radial-gradient(at 5%  60%, rgba(6,182,212,0.06)   0px,transparent 55%),
+        radial-gradient(at 92% 55%, rgba(6,182,212,0.05)   0px,transparent 50%),
+        radial-gradient(at 30% 95%, rgba(99,102,241,0.07)  0px,transparent 55%),
+        radial-gradient(at 88% 95%, rgba(16,185,129,0.05)  0px,transparent 45%);
+    }
+
+    /* ── GRID OVERLAY (light) ── */
+    .grid-overlay{
+      background-image:
+        linear-gradient(rgba(99,102,241,0.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(99,102,241,0.04) 1px,transparent 1px);
+      background-size:64px 64px;
+    }
+
+    /* ── ORBS (light, very subtle) ── */
+    @keyframes orbFloat1{ 0%,100%{transform:translate(0,0) scale(1)} 33%{transform:translate(50px,-60px) scale(1.06)} 66%{transform:translate(-30px,35px) scale(0.95)} }
+    @keyframes orbFloat2{ 0%,100%{transform:translate(0,0) scale(1)} 25%{transform:translate(-55px,35px) scale(1.07)} 50%{transform:translate(38px,-45px) scale(0.93)} 75%{transform:translate(-22px,-18px) scale(1.04)} }
+    @keyframes orbFloat3{ 0%,100%{transform:translate(0,0) scale(1)} 40%{transform:translate(65px,22px) scale(1.05)} 80%{transform:translate(-32px,-55px) scale(0.97)} }
     
-    @keyframes orb1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(40px,-60px) scale(1.05); } }
-    @keyframes bobA { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-15px) rotate(1deg); } }
-    @keyframes bobB { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translateY(-20px) rotate(-4deg); } }
-    @keyframes shimmer { 0% { transform: translateX(-120%) skewX(-15deg); } 100% { transform: translateX(250%) skewX(-15deg); } }
+    .orb{position:absolute;border-radius:50%;filter:blur(100px);pointer-events:none}
+    .orb-1{width:700px;height:700px;background:radial-gradient(circle,rgba(99,102,241,0.12) 0%,transparent 70%);animation:orbFloat1 22s ease-in-out infinite}
+    .orb-2{width:580px;height:580px;background:radial-gradient(circle,rgba(6,182,212,0.10) 0%,transparent 70%);animation:orbFloat2 28s ease-in-out infinite}
+    .orb-3{width:480px;height:480px;background:radial-gradient(circle,rgba(139,92,246,0.10) 0%,transparent 70%);animation:orbFloat3 24s ease-in-out infinite}
+    .orb-4{width:400px;height:400px;background:radial-gradient(circle,rgba(34,211,238,0.08) 0%,transparent 70%);animation:orbFloat1 32s ease-in-out infinite reverse}
+    .orb-5{width:320px;height:320px;background:radial-gradient(circle,rgba(16,185,129,0.07) 0%,transparent 70%);animation:orbFloat2 38s ease-in-out infinite}
 
-    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; }
-    .orb-blue { width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,.3) 0%, transparent 70%); top: -10%; left: -10%; animation: orb1 15s ease-in-out infinite; }
-    .orb-purple { width: 500px; height: 500px; background: radial-gradient(circle, rgba(139,92,246,.25) 0%, transparent 70%); bottom: 10%; right: -10%; animation: orb1 18s ease-in-out infinite reverse; }
+    /* ── FLOAT ANIMATIONS ── */
+    @keyframes floatY{0%,100%{transform:translateY(0)}50%{transform:translateY(-16px)}}
+    @keyframes floatYR{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-20px) rotate(2deg)}}
+    .float-a{animation:floatY 5s ease-in-out infinite}
+    .float-b{animation:floatY 7s ease-in-out infinite}
+    .float-c{animation:floatYR 6s ease-in-out infinite}
+    .float-d{animation:floatY 8.5s ease-in-out infinite}
+    .fd-1{animation-delay:.3s}.fd-2{animation-delay:.7s}.fd-3{animation-delay:1.2s}.fd-4{animation-delay:1.8s}
 
-    /* Glass & Gradients */
-    .glass { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.08); backdrop-filter: blur(24px); }
-    .glass-card { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.08); border-radius: 24px; backdrop-filter: blur(20px); transition: all 0.3s; }
-    .glass-card:hover { transform: translateY(-5px); border-color: rgba(99,102,241,.4); box-shadow: 0 15px 40px rgba(0,0,0,0.5), 0 0 20px rgba(99,102,241,0.2); }
+    /* ── GRADIENT TEXT ── */
+    .g-text{background:linear-gradient(135deg,#4338ca 0%,#6366f1 30%,#0891b2 65%,#06b6d4 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .g-text-c{background:linear-gradient(90deg,#0891b2,#06b6d4,#22d3ee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    .g-text-v{background:linear-gradient(90deg,#7c3aed,#8b5cf6,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+    @keyframes gradShift{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+    .g-text-anim{background:linear-gradient(270deg,#4338ca,#6366f1,#7c3aed,#0891b2,#06b6d4,#6366f1);background-size:400% 400%;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:gradShift 8s ease infinite}
+
+    /* ── GLASSMORPHISM ── */
+    .glass{background:rgba(255,255,255,0.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(15,23,42,0.08);box-shadow:0 2px 12px rgba(15,23,42,0.06)}
+    .glass-card{background:rgba(255,255,255,0.82);backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);border:1px solid rgba(15,23,42,0.08);border-radius:24px;box-shadow:0 4px 24px rgba(15,23,42,0.07);transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .glass-card:hover{background:rgba(255,255,255,0.95);border-color:rgba(99,102,241,0.3);transform:translateY(-5px);box-shadow:0 20px 60px rgba(99,102,241,0.12)}
+
+    /* ── NAVBAR ── */
+    .navbar-pill{background:rgba(255,255,255,0.92);backdrop-filter:blur(36px);-webkit-backdrop-filter:blur(36px);border:1px solid rgba(15,23,42,0.09);border-radius:100px;box-shadow:0 4px 24px rgba(15,23,42,0.07);transition:all .3s ease}
+    .navbar-pill.scrolled{box-shadow:0 8px 40px rgba(15,23,42,0.12),0 0 0 1px rgba(99,102,241,0.12)}
+
+    /* ── BUTTON SHIMMER ── */
+    @keyframes shimmer{0%{transform:translateX(-120%) skewX(-15deg)}100%{transform:translateX(250%) skewX(-15deg)}}
+    .btn-primary{position:relative;overflow:hidden;background:linear-gradient(135deg,#6366f1 0%,#4f46e5 50%,#4338ca 100%);border:1px solid rgba(99,102,241,0.4);transition:all .3s cubic-bezier(.4,0,.2,1)}
+    .btn-primary::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.3),transparent);transform:skewX(-15deg)}
+    .btn-primary:hover::before{animation:shimmer .75s ease-in-out}
+    .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(99,102,241,0.38),0 0 60px rgba(99,102,241,0.14)}
     
-    .grad-text { background: linear-gradient(135deg,#60A5FA,#818CF8,#C084FC); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .btn-secondary{position:relative;overflow:hidden;background:white;border:1.5px solid rgba(15,23,42,0.12);color:#334155;transition:all .3s cubic-bezier(.4,0,.2,1);box-shadow:0 1px 4px rgba(15,23,42,0.06)}
+    .btn-secondary::before{content:'';position:absolute;top:0;left:-120%;width:55%;height:100%;background:linear-gradient(90deg,transparent,rgba(99,102,241,0.08),transparent);transform:skewX(-15deg)}
+    .btn-secondary:hover::before{animation:shimmer .75s ease-in-out}
+    .btn-secondary:hover{background:#f8faff;border-color:rgba(99,102,241,0.35);color:#4f46e5;transform:translateY(-2px);box-shadow:0 8px 24px rgba(99,102,241,0.12)}
 
-    .btn-primary { position: relative; overflow: hidden; background: linear-gradient(135deg,#2563EB,#6366F1); color: white; border: 1px solid rgba(99,102,241,0.5); }
-    .btn-primary::before { content:''; position:absolute; top:0; left:-120%; width:50%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,.2),transparent); transform:skewX(-15deg); }
-    .btn-primary:hover::before { animation: shimmer 1s ease-in-out; }
-    .btn-primary:hover { box-shadow: 0 0 30px rgba(99,102,241,0.6); transform: translateY(-2px); }
+    /* ── CARDS ── */
+    .bento-card, .course-card, .job-card, .blog-card {background:#ffffff;border:1px solid rgba(15,23,42,0.07);border-radius:24px;overflow:hidden;box-shadow:0 2px 12px rgba(15,23,42,0.05);transition:all .4s cubic-bezier(.4,0,.2,1)}
+    .bento-card:hover, .job-card:hover {border-color:rgba(99,102,241,0.25);box-shadow:0 16px 48px rgba(99,102,241,0.1);transform:translateY(-4px)}
+    .course-card:hover, .blog-card:hover {border-color:rgba(6,182,212,0.3);box-shadow:0 18px 52px rgba(6,182,212,0.1);transform:translateY(-7px)}
 
-    .live-dot { width: 8px; height: 8px; background: #10B981; border-radius: 50%; box-shadow: 0 0 10px #10B981; animation: blink 1.5s infinite; }
-    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.4; } }
+    /* ── PHONE MOCKUP ── */
+    .phone-wrap{width:215px;height:430px;background:linear-gradient(155deg,rgba(15,20,48,.97),rgba(3,7,24,.99));border-radius:38px;border:2px solid rgba(255,255,255,0.1);box-shadow:0 0 0 1px rgba(0,0,0,0.4),0 32px 80px rgba(0,0,0,0.35),inset 0 1px 0 rgba(255,255,255,0.08),0 0 60px rgba(99,102,241,0.12);overflow:hidden;position:relative}
+    .phone-screen{position:absolute;inset:8px;border-radius:30px;overflow:hidden;background:#05081a}
+    .phone-notch{position:absolute;top:0;left:50%;transform:translateX(-50%);width:72px;height:7px;background:rgba(0,0,0,0.9);border-radius:0 0 12px 12px;z-index:20}
+    @media(max-width:1024px){.phone-wrap{width:185px;height:370px}}
+    @media(max-width:768px){.phone-wrap{width:175px;height:350px}}
 
-    /* Phone Mockups */
-    .phone-wrap { border-radius: 38px; background: rgba(10,15,30,.9); border: 1px solid rgba(255,255,255,.15); box-shadow: 0 40px 80px rgba(0,0,0,.8), inset 0 1px 0 rgba(255,255,255,.1); overflow: hidden; }
-    .phone-a { animation: bobA 6s ease-in-out infinite; }
-    .phone-b { animation: bobB 8s ease-in-out infinite; }
+    /* ── THUMBNAIL GRADIENTS ── */
+    .th-1{background:linear-gradient(135deg,#1e1b4b,#3730a3,#312e81)}
+    .th-2{background:linear-gradient(135deg,#0d1b2a,#134e4a,#065f46)}
+    .th-3{background:linear-gradient(135deg,#1e1b4b,#4c1d95,#1a0533)}
+    .th-4{background:linear-gradient(135deg,#0c1445,#1e3a8a,#0a1128)}
+    .th-5{background:linear-gradient(135deg,#3b0764,#6b21a8,#1e1b4b)}
+    .th-6{background:linear-gradient(135deg,#042f2e,#065f46,#0c4a6e)}
+
+    /* ── BADGES ── */
+    .badge{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:600;letter-spacing:.03em}
+    .badge-c{background:rgba(6,182,212,.1);border:1px solid rgba(6,182,212,0.25);color:#0e7490}
+    .badge-v{background:rgba(139,92,246,.1);border:1px solid rgba(139,92,246,0.25);color:#7c3aed}
+    .badge-i{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,0.25);color:#4f46e5}
+    .badge-g{background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,0.25);color:#059669}
+    .badge-a{background:rgba(245,158,11,.1);border:1px solid rgba(245,158,11,0.25);color:#b45309}
+    .badge-r{background:rgba(239,68,68,.1);border:1px solid rgba(239,68,68,0.25);color:#dc2626}
+    .sec-tag{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:100px;background:rgba(99,102,241,0.08);border:1px solid rgba(99,102,241,0.2);font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#4f46e5}
+
+    /* ── SCROLL REVEAL ── */
+    .reveal,.reveal-l,.reveal-r,.reveal-s{transition:opacity .85s cubic-bezier(.4,0,.2,1),transform .85s cubic-bezier(.4,0,.2,1)}
+    .reveal{opacity:0;transform:translateY(36px)}
+    .reveal-l{opacity:0;transform:translateX(-38px)}
+    .reveal-r{opacity:0;transform:translateX(38px)}
+    .revealed{opacity:1!important;transform:none!important}
+    .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}
+
+    /* ── LIVE DOT ── */
+    @keyframes livePulse{0%,100%{box-shadow:0 0 0 0 rgba(16,185,129,0.5)}50%{box-shadow:0 0 0 6px rgba(16,185,129,0)}}
+    .live-dot{width:8px;height:8px;border-radius:50%;background:#10b981;animation:livePulse 2s ease-in-out infinite;flex-shrink:0}
+
+    /* ── MISC UTILS ── */
+    .search-bar{background:#ffffff;border:1.5px solid rgba(15,23,42,0.12);backdrop-filter:blur(12px);transition:all .3s ease;color:#0f172a;box-shadow:0 2px 8px rgba(15,23,42,0.05)}
+    .search-bar:focus{outline:none;border-color:rgba(99,102,241,0.5);box-shadow:0 0 0 3px rgba(99,102,241,0.1),0 2px 8px rgba(15,23,42,0.05)}
+    .co-init{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;flex-shrink:0}
+    .truncate-2{overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+    .sec-alt{background:#f8fafc}
+    .sec-white{background:#ffffff}
+    .footer-bg{background:linear-gradient(180deg,#f1f5f9 0%,#f8fafc 100%)}
+    
+    @keyframes numFlash{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:translateY(0)}}
+    .num-flash{opacity:0}
+    .num-flash.revealed{animation:numFlash .6s ease forwards}
+
+    #mobile-menu{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    #mobile-menu.open{max-height:420px}
   </style>
 </head>
-<body class="font-jakarta relative">
 
-  <div class="bg-layer">
-    <div class="grid-lines"></div>
-    <div class="orb orb-blue"></div>
-    <div class="orb orb-purple"></div>
+<body class="mesh-bg min-h-screen antialiased overflow-x-hidden">
+
+  <div class="fixed inset-0 grid-overlay pointer-events-none z-0 opacity-60"></div>
+  <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+    <div class="orb orb-1" style="top:-8%;left:-6%"></div>
+    <div class="orb orb-2" style="top:18%;right:-9%"></div>
+    <div class="orb orb-3" style="bottom:22%;left:8%"></div>
+    <div class="orb orb-4" style="bottom:-8%;right:18%"></div>
+    <div class="orb orb-5" style="top:52%;left:42%"></div>
   </div>
 
-  <header class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-full max-w-5xl px-4">
-    <nav class="glass rounded-full px-6 py-3 flex justify-between items-center">
-      <div class="font-black text-xl tracking-tight text-white">Course<span class="grad-text">ify</span></div>
-      <div class="hidden md:flex gap-6 text-sm font-semibold text-slate-300">
-        <a href="#jobs" class="hover:text-white transition">Live Jobs</a>
-        <a href="#blog" class="hover:text-white transition">Today's Update</a>
-      </div>
-      <a href="#app" class="btn-primary px-5 py-2.5 rounded-full text-sm font-bold shadow-lg shadow-blue-500/20">Download App</a>
-    </nav>
-  </header>
+  <div class="relative z-10">
 
-  <section class="min-h-screen flex items-center pt-32 pb-20 px-4">
-    <div class="max-w-7xl mx-auto w-full grid lg:grid-cols-2 gap-12 items-center">
-      <div class="space-y-8 relative z-10">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass">
-          <div class="live-dot"></div><span class="text-xs font-bold text-emerald-400 tracking-widest uppercase">Now Live · Job Board</span>
-        </div>
-        <h1 class="text-5xl lg:text-7xl font-black leading-tight tracking-tight">
-          Supercharge <br><span class="grad-text">Your Career.</span>
-        </h1>
-        <p class="text-lg text-slate-400 max-w-md">Learn from premium courses, swipe through tech shorts, and apply to Live Jobs directly from your phone.</p>
-        <div class="flex gap-4">
-          <a href="#app" class="btn-primary px-8 py-4 rounded-full font-bold">Get the App</a>
-          <a href="#jobs" class="glass px-8 py-4 rounded-full font-bold hover:bg-white/10 transition text-white">Explore Jobs</a>
-        </div>
-      </div>
-
-      <div class="relative h-[600px] hidden lg:flex justify-center items-center">
-        <div class="absolute phone-wrap phone-b w-[220px] h-[450px] z-10 right-10 top-10 p-4 opacity-60">
-          <div class="text-xs font-bold text-white mb-4">Educational Shorts</div>
-          <div class="h-4/5 w-full bg-gradient-to-b from-purple-500/30 to-blue-500/30 rounded-2xl border border-white/10 flex items-center justify-center">
-            <span class="text-4xl">⚡</span>
+    <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+      <nav id="navbar" class="navbar-pill max-w-6xl mx-auto px-5 py-2.5 flex items-center justify-between gap-4">
+        <a href="#" class="flex items-center gap-2.5 flex-shrink-0 group">
+          <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-indigo-500 via-indigo-600 to-cyan-500 flex items-center justify-center shadow-lg" style="box-shadow:0 4px 14px rgba(99,102,241,0.35)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+              <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="white" opacity=".95"/>
+              <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="white" opacity=".7"/>
+            </svg>
           </div>
-        </div>
-        <div class="absolute phone-wrap phone-a w-[260px] h-[520px] z-20 shadow-2xl shadow-blue-500/20 p-5 pt-10">
-          <div class="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 bg-black rounded-b-xl"></div>
-          <h3 class="font-bold text-lg text-white mb-4">Good morning! 👋</h3>
-          <div class="glass p-3 rounded-xl mb-4">
-            <div class="text-[10px] text-emerald-400 font-bold mb-1">NEW JOB MATCH</div>
-            <div class="font-bold text-sm text-white">Data Engineer</div>
-            <div class="text-xs text-slate-400">RAPL · Hyderabad</div>
-          </div>
-          <div class="glass p-3 rounded-xl border-blue-500/30">
-            <div class="text-[10px] text-blue-400 font-bold mb-1">CONTINUE LEARNING</div>
-            <div class="font-bold text-sm text-white">Databricks Masterclass</div>
-            <div class="w-full h-1 bg-white/10 rounded-full mt-2"><div class="w-[70%] h-full bg-blue-500 rounded-full"></div></div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="jobs" class="py-24 px-4 relative z-10">
-    <div class="max-w-6xl mx-auto">
-      <div class="flex justify-between items-end mb-10">
-        <div>
-          <span class="inline-block px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-bold uppercase tracking-wider mb-3">Hiring Now</span>
-          <h2 class="text-4xl font-black text-white">Live <span class="grad-text">Job Board</span></h2>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        
-        <div class="glass-card p-6 flex flex-col h-full group">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-black text-white text-lg shadow-lg">
-              BS
-            </div>
-            <span class="bg-white/5 border border-white/10 text-slate-300 text-[10px] font-bold px-2 py-1 rounded-full">Government</span>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-blue-400 transition truncate" title="BSNL Junior Telecom Officer (JTO)">BSNL Junior Telecom Officer (JTO)</h4>
-          <p class="text-slate-400 text-sm mb-4 truncate">BSNL · India</p>
-          <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
-            <div class="font-bold text-emerald-400 text-sm">Not specified</div>
-            <a href="https://www.youtube.com/watch?v=fkG8yRtWS9M" target="_blank" class="btn-primary px-4 py-1.5 rounded-lg text-xs font-bold shadow-md shadow-blue-500/20">Apply</a>
-          </div>
-        </div>
-        
-        <div class="glass-card p-6 flex flex-col h-full group">
-          <div class="flex justify-between items-start mb-4">
-            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-500 flex items-center justify-center font-black text-white text-lg shadow-lg">
-              CO
-            </div>
-            <span class="bg-white/5 border border-white/10 text-slate-300 text-[10px] font-bold px-2 py-1 rounded-full">IT</span>
-          </div>
-          <h4 class="text-lg font-bold text-white mb-1 group-hover:text-blue-400 transition truncate" title="Service Desk Role">Service Desk Role</h4>
-          <p class="text-slate-400 text-sm mb-4 truncate">Cognizant · Not specified</p>
-          <div class="mt-auto pt-4 border-t border-white/10 flex items-center justify-between">
-            <div class="font-bold text-emerald-400 text-sm">Not specified</div>
-            <a href="https://english.rajeshjobportal.com/cognizant-fresher-hiring-for-service-desk-role-jobs-2026/" target="_blank" class="btn-primary px-4 py-1.5 rounded-lg text-xs font-bold shadow-md shadow-blue-500/20">Apply</a>
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </section>
-
-  <section id="blog" class="py-24 px-4 relative z-10 border-t border-white/5">
-    <div class="max-w-4xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-4xl font-black text-white">Today's <span class="grad-text">Update</span></h2>
-        <p class="text-slate-400 mt-2">Daily tech insights generated by our AI.</p>
-      </div>
-
-      <div class="glass-card p-8 md:p-12 relative overflow-hidden group">
-        <div class="absolute -top-20 -right-20 w-64 h-64 bg-purple-500/20 blur-[80px] rounded-full group-hover:bg-blue-500/20 transition-colors duration-500"></div>
-        
-        <div class="relative z-10">
-          <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-bold uppercase mb-4">
-            <span class="text-base">✨</span> AI Insight
-          </span>
-          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4 leading-tight">Unlock India's Hottest Tech Jobs: Master AI, PySpark, and Full-Stack Dev Skills</h3>
-          <p class="text-slate-300 leading-relaxed text-sm md:text-base">
-            As AI adoption surges in India, professionals with expertise in PySpark, a key component of Databricks, are in high demand. To stay ahead, focus on upskilling in full-stack development, particularly with frameworks like React, Angular, and Node.js. Meanwhile, IT hiring trends in India indicate a significant shift towards AI-driven roles, with companies seeking talent who can integrate AI with cloud-based technologies. By acquiring these skills, you'll be well-positioned to capitalize on India's thriving tech job market.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="app" class="py-24 px-4 relative z-10">
-    <div class="max-w-5xl mx-auto text-center glass-card p-12 border-blue-500/30 relative overflow-hidden">
-      <div class="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-purple-600/10 pointer-events-none"></div>
-      <h2 class="text-4xl md:text-5xl font-black text-white mb-6 relative z-10">Ready to take off? 🚀</h2>
-      <p class="text-slate-400 mb-8 max-w-lg mx-auto relative z-10">Join thousands of learners and professionals securing their future with the Courseify App.</p>
-      <div class="flex flex-col sm:flex-row justify-center gap-4 relative z-10">
-        <a href="#" class="btn-primary px-8 py-4 rounded-xl font-bold text-lg flex items-center justify-center gap-3">
-          Download iOS App
+          <span class="text-[17px] font-extrabold tracking-tight text-slate-900">Courseify</span>
         </a>
-        <a href="#" class="glass px-8 py-4 rounded-xl font-bold text-lg text-white hover:bg-white/10 transition flex items-center justify-center gap-3">
-          Download Android App
-        </a>
+        <ul class="hidden md:flex items-center gap-0.5">
+          <li><a href="#" class="px-4 py-2 text-sm font-semibold text-indigo-600 rounded-full transition-all">Home</a></li>
+          <li><a href="#courses" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-full hover:bg-slate-50 transition-all">Courses</a></li>
+          <li><a href="#jobs" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-full hover:bg-slate-50 transition-all">Jobs</a></li>
+          <li><a href="#blogs" class="px-4 py-2 text-sm font-medium text-slate-600 hover:text-slate-900 rounded-full hover:bg-slate-50 transition-all">Blogs</a></li>
+        </ul>
+        <div class="flex items-center gap-3">
+          <a href="#download" class="hidden md:flex btn-primary items-center gap-2 px-5 py-2.5 rounded-full text-[13px] font-semibold text-white">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16l-5-5 1.4-1.4L11 13.2V4h2v9.2l2.6-3.6L17 11l-5 5z"/><path d="M5 20h14"/></svg>
+            Download App
+          </a>
+          <button id="menu-toggle" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5 rounded-full hover:bg-slate-100 transition-all">
+            <span class="w-5 h-0.5 bg-slate-700 block transition-all" id="h-l1"></span>
+            <span class="w-5 h-0.5 bg-slate-700 block transition-all" id="h-l2"></span>
+            <span class="w-4 h-0.5 bg-slate-700 block transition-all" id="h-l3"></span>
+          </button>
+        </div>
+      </nav>
+      <div id="mobile-menu" class="navbar-pill max-w-6xl mx-auto mt-2 rounded-3xl">
+        <div class="px-5 py-4 flex flex-col gap-1">
+          <a href="#" class="px-4 py-2.5 text-sm font-semibold text-indigo-600 rounded-2xl bg-indigo-50">Home</a>
+          <a href="#courses" class="px-4 py-2.5 text-sm font-medium text-slate-600 rounded-2xl hover:bg-slate-50 transition-all">Courses</a>
+          <a href="#jobs" class="px-4 py-2.5 text-sm font-medium text-slate-600 rounded-2xl hover:bg-slate-50 transition-all">Jobs</a>
+          <a href="#blogs" class="px-4 py-2.5 text-sm font-medium text-slate-600 rounded-2xl hover:bg-slate-50 transition-all">Blogs</a>
+          <div class="pt-2 mt-1 border-t border-slate-100">
+            <a href="#download" class="btn-primary flex justify-center gap-2 w-full py-3 rounded-2xl text-sm font-semibold text-white">Download App</a>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </header>
 
-  <footer class="border-t border-white/10 py-12 px-4 relative z-10 text-center md:text-left">
-    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-      <div>
-        <div class="font-black text-2xl text-white mb-2">Courseify.</div>
-        <p class="text-slate-500 text-sm">Supercharging careers through tech.</p>
+    <section id="hero" class="relative min-h-screen flex items-center pt-28 pb-20 px-4 overflow-hidden">
+      <div class="absolute inset-0 flex items-center justify-center pointer-events-none">
+        <div style="width:900px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.07) 0%,transparent 65%);filter:blur(60px)"></div>
       </div>
-      <div class="text-slate-400 text-sm font-semibold">
-        <p>Powered by <span class="text-white">Infin8Labs</span></p>
-        <p class="text-xs mt-1">Makers of <span class="text-blue-400">SnapOnWheels</span></p>
+      <div class="relative max-w-6xl mx-auto w-full">
+        <div class="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
+          <div class="flex-1 text-center lg:text-left">
+            <div class="reveal inline-flex items-center gap-2.5 mb-6 px-4 py-2 rounded-full" style="background:rgba(16,185,129,0.08);border:1.5px solid rgba(16,185,129,0.25)">
+              <div class="live-dot"></div>
+              <span class="text-xs font-semibold text-emerald-700 tracking-wide">50,000+ Active Learners</span>
+            </div>
+            <h1 class="reveal d1 font-extrabold leading-[1.08] mb-5 text-slate-900" style="font-size:clamp(2.6rem,6.5vw,5rem)">
+              <span>Supercharge</span><br/>
+              <span class="g-text-anim">Your Career.</span>
+            </h1>
+            <p class="reveal d2 text-slate-500 max-w-xl mb-8 leading-relaxed lg:mx-0 mx-auto" style="font-size:clamp(1rem,2vw,1.1rem)">
+              Master in-demand skills with <span class="text-slate-800 font-semibold">premium courses</span>, stay sharp with <span class="text-slate-800 font-semibold">educational shorts</span>, and land your dream role through our <span class="text-slate-800 font-semibold">live job board</span>.
+            </p>
+            <div class="reveal d3 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
+              <a href="#jobs" class="btn-primary flex items-center justify-center gap-2 px-6 py-3.5 rounded-2xl text-sm font-semibold text-white">Explore Live Jobs</a>
+            </div>
+            <div class="reveal d4 flex items-center gap-6 justify-center lg:justify-start flex-wrap">
+              <div class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold g-text-c num-flash">50K+</span><span class="text-xs text-slate-500 leading-tight">Learners<br/>Worldwide</span>
+              </div>
+              <div class="w-px h-8 bg-slate-200"></div>
+              <div class="flex items-center gap-2">
+                <span class="text-2xl font-extrabold g-text-v num-flash">500+</span><span class="text-xs text-slate-500 leading-tight">Premium<br/>Courses</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1 flex items-center justify-center relative" style="min-height:500px">
+            <div class="absolute" style="width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 65%);filter:blur(50px);top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+            <div class="relative" style="width:380px;height:480px">
+              <div class="absolute float-b fd-2" style="right:-10px;top:35px;z-index:1;transform:perspective(900px) rotateY(-22deg) scale(0.84);opacity:0.6">
+                <div class="phone-wrap"><div class="phone-notch"></div><div class="phone-screen bg-emerald-900/20"></div></div>
+              </div>
+              <div class="absolute float-a" style="left:50%;top:0;transform:translateX(-50%);z-index:3">
+                <div class="phone-wrap">
+                  <div class="phone-notch"></div>
+                  <div class="phone-screen flex flex-col items-center justify-center bg-slate-900 text-white p-5 text-center">
+                    <span class="text-4xl mb-3">🚀</span><h3 class="font-bold">Courseify App</h3><p class="text-xs text-slate-400 mt-2">Available on iOS & Android</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
+    </section>
 
+    <section id="ecosystem" class="py-24 px-4 sec-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="text-center mb-14 reveal">
+          <div class="sec-tag mb-5">The Complete Platform</div>
+          <h2 class="font-extrabold text-slate-900 mb-4" style="font-size:clamp(2rem,4.5vw,3.2rem)">Everything You Need.<br/><span class="g-text">In One Place.</span></h2>
+        </div>
+        <div class="grid grid-cols-12 gap-5">
+          <div class="bento-card reveal d1 col-span-12 lg:col-span-7 p-8" style="border-top:3px solid #6366f1">
+            <div class="badge badge-i mb-3">Premium Courses</div>
+            <h3 class="text-2xl font-extrabold text-slate-900 mb-2">Expert-Led Learning</h3>
+            <p class="text-slate-500 text-sm mb-6">Curated by industry professionals. Structured for real-world outcomes in Data Engineering, Full-Stack, and more.</p>
+            <div class="flex gap-2"><span class="badge badge-c">PySpark</span><span class="badge badge-v">Databricks</span><span class="badge badge-g">React</span></div>
+          </div>
+          <div class="bento-card reveal d2 col-span-12 lg:col-span-5 p-8" style="border-top:3px solid #8b5cf6">
+            <div class="badge badge-v mb-3">Educational Shorts</div>
+            <h3 class="text-xl font-extrabold text-slate-900 mb-1">Bite-Sized Learning</h3>
+            <p class="text-slate-500 text-sm mb-4">60-second power lessons. Learn while you scroll.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="courses" class="py-24 px-4 sec-alt">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 reveal">
+          <div><div class="sec-tag mb-4">Trending Now</div><h2 class="font-extrabold text-slate-900 text-3xl">Top Courses</h2></div>
+          <a href="#" class="btn-secondary px-6 py-3 rounded-xl text-sm font-semibold">View All 500+</a>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="course-card reveal d1">
+            <div class="relative overflow-hidden h-40 th-1 flex justify-center items-center"><span class="text-5xl">💻</span></div>
+            <div class="p-5"><h3 class="font-bold text-slate-900 mb-2">Full Stack Web Development</h3><p class="text-xs text-slate-500">React, Node, AWS</p></div>
+          </div>
+          <div class="course-card reveal d2">
+            <div class="relative overflow-hidden h-40 th-2 flex justify-center items-center"><span class="text-5xl">📊</span></div>
+            <div class="p-5"><h3 class="font-bold text-slate-900 mb-2">Data Science & Machine Learning</h3><p class="text-xs text-slate-500">Python to Production</p></div>
+          </div>
+          <div class="course-card reveal d3">
+            <div class="relative overflow-hidden h-40 th-3 flex justify-center items-center"><span class="text-5xl">☁️</span></div>
+            <div class="p-5"><h3 class="font-bold text-slate-900 mb-2">Cloud Architecture</h3><p class="text-xs text-slate-500">AWS & Kubernetes</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="jobs" class="py-24 px-4 sec-white">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8 reveal">
+          <div>
+            <div class="sec-tag mb-4"><div class="live-dot" style="width:7px;height:7px"></div>Live Opportunities</div>
+            <h2 class="font-extrabold text-slate-900" style="font-size:clamp(1.8rem,4vw,2.8rem)">Your Dream Job<br/><span class="g-text">Is Waiting.</span></h2>
+          </div>
+          <div class="text-right">
+            <div class="text-3xl font-black g-text-c num-flash reveal">{{ total_jobs | default('1,247') }}</div>
+            <div class="text-xs text-slate-400">Live Openings · Updated Now</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {% for job in jobs %}
+          <div class="job-card reveal {{ loop.cycle('d1', 'd2', 'd3') }} p-5 flex flex-col h-full">
+            <div class="flex items-start gap-3 mb-4">
+              <div class="co-init" style="background:linear-gradient(135deg,#4338ca,#6366f1);color:white;font-size:13px">
+                {{ (job.company | default('IT'))[:2] | upper }}
+              </div>
+              <div class="flex-1 min-w-0">
+                <h3 class="text-sm font-bold text-slate-900 leading-tight mb-0.5 overflow-hidden text-ellipsis whitespace-nowrap" title="{{ job.title }}">{{ job.title }}</h3>
+                <p class="text-xs text-slate-400 overflow-hidden text-ellipsis whitespace-nowrap">{{ job.company }}</p>
+              </div>
+              <span class="badge badge-g flex-shrink-0" style="font-size:9px;padding:2px 8px">{{ job.category | default('Tech') }}</span>
+            </div>
+            <div class="flex flex-wrap gap-2 mb-4 flex-grow">
+              <span class="flex items-center gap-1 text-xs text-slate-400">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                {{ job.location }}
+              </span>
+              <span class="badge badge-c">{{ job.type }}</span>
+              <span class="badge badge-a">{{ job.salary }}</span>
+            </div>
+            <div class="flex items-center justify-between pt-3" style="border-top:1px solid rgba(15,23,42,0.07)">
+              <span class="text-xs text-slate-400 font-medium text-emerald-600">Fresh Update</span>
+              <a href="{{ job.apply_link }}" target="_blank" rel="noopener noreferrer" class="btn-primary px-4 py-2 rounded-xl text-xs font-semibold text-white">Apply Now</a>
+            </div>
+          </div>
+          {% else %}
+          <div class="col-span-3 text-center py-10">
+            <p class="text-slate-500 font-medium">Fetching the latest jobs... Check back tomorrow!</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+
+    <section id="blogs" class="py-24 px-4 sec-alt">
+      <div class="max-w-6xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12 reveal">
+          <div><div class="sec-tag mb-4">Latest Insights</div><h2 class="font-extrabold text-slate-900 text-3xl">Level Up<br/><span class="g-text">Your Knowledge</span></h2></div>
+        </div>
+        
+        <div class="blog-card reveal mb-6 bg-white">
+          <div class="flex flex-col lg:flex-row">
+            <div class="bt-1 lg:w-2/5 flex-shrink-0 relative overflow-hidden" style="min-height:240px">
+              <div class="absolute inset-0 flex items-center justify-center"><span style="font-size:5rem;filter:drop-shadow(0 0 30px rgba(99,102,241,0.5))">✨</span></div>
+              <div class="absolute top-4 left-4"><span class="badge badge-i bg-white text-indigo-600">Daily Insight</span></div>
+            </div>
+            <div class="flex-1 p-8 flex flex-col justify-between">
+              <div>
+                <div class="flex items-center gap-3 mb-4"><span class="badge badge-a">Trending Today</span><span class="text-xs text-slate-400">By Infin8Labs AI</span></div>
+                <h3 class="text-xl lg:text-2xl font-extrabold text-slate-900 mb-3 leading-tight">{{ daily_blog.title | default('10 Skills That Will Make You Unstoppable in 2026') }}</h3>
+                <p class="text-slate-500 text-sm leading-relaxed mb-5">{{ daily_blog.content | default('The job market is evolving faster than ever. From AI literacy to communication mastery — here is your complete roadmap to staying ahead of the curve and getting noticed by top companies.') }}</p>
+              </div>
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <div class="w-8 h-8 rounded-full bg-gradient-to-br from-indigo-500 to-cyan-400 flex items-center justify-center text-xs font-bold text-white">I</div>
+                  <div><p class="text-xs font-semibold text-slate-800">Infin8Labs AI</p><p class="text-xs text-slate-400">Career Coach</p></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="footer-bg pt-16 pb-8 px-4 border-t border-slate-200">
+      <div class="max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-12">
+          <div class="lg:col-span-2">
+            <div class="flex items-center gap-2.5 mb-4">
+              <div class="w-10 h-10 rounded-2xl bg-gradient-to-br from-indigo-500 to-cyan-500 flex items-center justify-center">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z" fill="white"/><path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="white" opacity=".7"/></svg>
+              </div>
+              <span class="text-lg font-extrabold text-slate-900">Courseify</span>
+            </div>
+            <p class="text-slate-500 text-sm mb-5">Your end-to-end career acceleration platform. Learn, grow, and get hired.</p>
+            <div class="inline-flex flex-col gap-1 p-3 rounded-2xl bg-indigo-50/50 border border-indigo-100">
+              <span class="text-xs text-slate-400">Powered by</span>
+              <span class="text-sm font-extrabold g-text">Infin8Labs</span>
+              <span class="text-xs text-slate-400">Makers of SnapOnWheels</span>
+            </div>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase mb-4">Product</h4>
+            <ul class="space-y-3">
+              <li><a href="#courses" class="text-sm text-slate-600 hover:text-indigo-600 font-medium">Courses</a></li>
+              <li><a href="#jobs" class="text-sm text-slate-600 hover:text-indigo-600 font-medium">Job Board</a></li>
+              <li><a href="#blogs" class="text-sm text-slate-600 hover:text-indigo-600 font-medium">Insights</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 class="text-xs font-bold text-slate-400 uppercase mb-4">Legal</h4>
+            <ul class="space-y-3">
+              <li><a href="/privacy-policy.html" class="text-sm text-slate-600 hover:text-indigo-600 font-medium">Privacy Policy</a></li>
+              <li><a href="/terms.html" class="text-sm text-slate-600 hover:text-indigo-600 font-medium">Terms of Service</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="border-t border-slate-200 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p class="text-xs text-slate-400">© 2026 Courseify by Infin8Labs. All rights reserved.</p>
+          <div class="text-xs text-slate-400">Crafted with ❤️ in Hyderabad</div>
+        </div>
+      </div>
+    </footer>
+
+  </div><script>
+    const revealEls = document.querySelectorAll('.reveal, .reveal-l, .reveal-r, .num-flash');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(el => { if (el.isIntersecting) { el.target.classList.add('revealed'); observer.unobserve(el.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 30) navbar.classList.add('scrolled');
+      else navbar.classList.remove('scrolled');
+    });
+
+    const toggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    let menuOpen = false;
+    toggle.addEventListener('click', () => {
+      menuOpen = !menuOpen; mobileMenu.classList.toggle('open', menuOpen);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+      });
+    });
+  </script>
 </body>
 </html>
